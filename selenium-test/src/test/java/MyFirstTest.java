@@ -14,19 +14,20 @@ public class MyFirstTest {
 
     @Before
     public void initWebDriver() {
-        System.setProperty("webdriver.chrome.driver","D:\\Projects\\ui-tests\\selenium-test\\src\\test\\resources\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver","C:\\Users\\cydfp\\Downloads\\ui-tests-master\\ui-tests-master\\selenium-test\\src\\test\\resources\\chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     }
 
     @Test
-    public void pageIsLoadedTest(){
-        driver.get("D:\\Projects\\ui-tests\\selenium-test\\src\\test\\resources\\index.html");
+    public void wrongFirstNameTestShouldFail(){
+        driver.get("C:\\Users\\cydfp\\Downloads\\ui-tests-master\\ui-tests-master\\selenium-test\\src\\test\\resources\\index.html");
+
         WebElement firstName = driver.findElement(By.id("firstName"));
-        firstName.sendKeys("Miklos");
+        firstName.sendKeys("a");
         WebElement submit = driver.findElement(By.id("submit-button"));
         submit.click();
         WebElement message = driver.findElement(By.id("Message"));
-        assert "Success".equals(message.getText());
+        assert "Failed".equals(message.getText());
     }
 }
